@@ -1,15 +1,19 @@
 public class LiquidacionUNAULA extends Liquidacion implements LiquidacionServicio {
 
+    public int matriculaNeta;
+
     public LiquidacionUNAULA(boolean certificadoElectoral) {
+        this.matriculaNeta = 80;
         super.setCertificadoElectoral(certificadoElectoral);
     }
 
     @Override
     public int valorMatricula() {
         if(super.isCertificadoElectoral()){
-            return 80 - 10;
+            return matriculaNeta - 10;
+        } else {
+            return matriculaNeta;
         }
-        return 80;
     }
 
     @Override
@@ -19,8 +23,6 @@ public class LiquidacionUNAULA extends Liquidacion implements LiquidacionServici
 
     @Override
     public int valorDerechosGrado() {
-        return valorMatricula() * 20 / 100;
+        return matriculaNeta * 20 / 100;
     }
-
-
 }
